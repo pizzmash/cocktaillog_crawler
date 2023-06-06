@@ -4,7 +4,8 @@
 selenium
 
 ``` bash
-$ sudo apt install python3-selenium
+$ sudo apt install python3-selenium # ←こいつっていります？
+$ pip install selenium
 ```
 
 chrome
