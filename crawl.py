@@ -81,7 +81,6 @@ if __name__ == "__main__":
             def compare_th(row, th_except):
                 try:
                     th_actual = row.find_element(By.TAG_NAME, "th").text
-                    # print(th_actual)
                     return th_actual == th_except
                 except Exception:
                     return False
