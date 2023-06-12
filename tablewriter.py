@@ -1,16 +1,15 @@
+import csv
+import os
+
+
 class TableCsvWriter:
     @classmethod
-    def write(cls, table, path):
-        print("TABLE: {}".format(table.table_name))
-        for i, field_name in enumerate(table.field_names):
-            if i == len(table.field_names) - 1:
-                print(field_name)
-            else:
-                print(field_name, end="\t")
+    def write(cls, table, dir):
+        with open(os.path.join(dir, table.table_name + ".csv"), mode="w") as f:
+            writer = csv.DictWriter(f, fieldnames=["id"] + table.field_names)
 
-        for row in table.table:
-            for i, col in enumerate(row):
-                if i == len(row) - 1:
-                    print(col)
-                else:
-                    print(col, end="\t")
+            writer.writeheader()
+            for id, item in enumerate(table.table):
+                item_dict = {fn: v for fn, v in zip(table.field_names, item)}
+                item_dict["id"] = id
+                writer.writerow(item_dict)

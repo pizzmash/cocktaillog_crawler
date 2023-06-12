@@ -2,6 +2,7 @@ from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
+from tqdm import tqdm
 
 from table import Table
 from tablewriter import TableCsvWriter
@@ -84,7 +85,7 @@ if __name__ == "__main__":
     driver = get_driver()
 
     N_PAGES = 913
-    for page in range(1, N_PAGES + 1):
+    for page in tqdm(range(1, N_PAGES + 1)):
         page_url = url.format(page)
 
         # urlにアクセス
@@ -167,13 +168,11 @@ if __name__ == "__main__":
                 quantities,
             )
 
-        TableCsvWriter.write(cocktail_table, None)
-        TableCsvWriter.write(drink_table, None)
-        TableCsvWriter.write(glass_table, None)
-        TableCsvWriter.write(technique_table, None)
-        TableCsvWriter.write(cocktail_drink_table, None)
-
-        input()
+    TableCsvWriter.write(cocktail_table, "data")
+    TableCsvWriter.write(drink_table, "data")
+    TableCsvWriter.write(glass_table, "data")
+    TableCsvWriter.write(technique_table, "data")
+    TableCsvWriter.write(cocktail_drink_table, "data")
 
     # ブラウザ停止
     driver.quit()
