@@ -1,5 +1,5 @@
 # cocktaillog_crawler
-## installation
+## setup
 
 selenium
 
@@ -25,4 +25,16 @@ Google Chrome 114.0.5735.106
 # webdriver
 $ chromedriver -v
 ChromeDriver 113.0.5672.126 (c541687b21a73452ab403e2dced7033ddc97ee9d-refs/branch-heads/5672@{#1202})
+```
+
+pip
+``` bash
+# tqdm
+$ pip install -r requirements.txt
+```
+
+
+## usage
+``` bash
+$ python crawl.py
 ```
