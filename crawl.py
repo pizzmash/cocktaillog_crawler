@@ -84,7 +84,7 @@ if __name__ == "__main__":
 
     driver = get_driver()
 
-    N_PAGES = 913
+    N_PAGES = 955
     for page in tqdm(range(1, N_PAGES + 1)):
         page_url = url.format(page)
 
@@ -100,7 +100,8 @@ if __name__ == "__main__":
             # 材料
             materials_tb = item.find_element(By.TAG_NAME, "tbody")
             materials = [
-                m.text for m in materials_tb.find_elements(By.CLASS_NAME, "align_left")
+                m.text.split("(")[0].split("\n")[0].strip()
+                for m in materials_tb.find_elements(By.CLASS_NAME, "align_left")
             ]
             quantities = [
                 q.text for q in materials_tb.find_elements(By.CLASS_NAME, "align_right")
