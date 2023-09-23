@@ -84,7 +84,7 @@ if __name__ == "__main__":
 
     driver = get_driver()
 
-    N_PAGES = 955
+    N_PAGES = 96
     for page in tqdm(range(1, N_PAGES + 1)):
         page_url = url.format(page)
 
